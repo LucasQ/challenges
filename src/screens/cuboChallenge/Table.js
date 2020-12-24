@@ -6,9 +6,9 @@ export default function Table() {
       <thead>
         <tr>
           <th className="border px-3 py-1 border-gray-300"> </th>
-          <th className="border px-16 py-1 border-gray-300">First name</th>
-          <th className="border px-24 py-1 border-gray-300">Last name</th>
-          <th className="border p-6 py-1 border-gray-300">Participation</th>
+          <th className="border px-12 py-1 border-gray-300">First name</th>
+          <th className="border px-20 py-1 border-gray-300">Last name</th>
+          <th className="border px-2 py-1 border-gray-300">Participation</th>
         </tr>
       </thead>
       <tbody>

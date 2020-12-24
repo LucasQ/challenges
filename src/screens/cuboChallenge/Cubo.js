@@ -1,8 +1,13 @@
 import React from 'react';
 import NavCubo from './NavCubo';
 import Table from './Table';
+import PieChart from './PieChart';
 
 export default function Cubo() {
+  function handleSubmit(value) {
+    console.log(value);
+  }
+
   return (
     <div>
       <NavCubo />
@@ -14,8 +19,13 @@ export default function Cubo() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </h3>
           </div>
-          <div className="flex-2 mt-14">
-            <Table />
+          <div className="flex space-x-32">
+            <div className="flex-2 mt-14">
+              <Table />
+            </div>
+            <div className="flex-2 mt-6">
+              <PieChart />
+            </div>
           </div>
         </div>
       </div>
