@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react';
 import Chart from 'chart.js';
+import PropTypes from 'prop-types';
 import Legend from './Legend';
+import capitalizeFirstLetter from '../../Utils';
 
-export default function PieChart() {
+export default function PieChart({ users }) {
   const data = {
     data: {
       datasets: [
         {
-          backgroundColor: [
-            '#ff0000',
-            '#0039e6',
-            '#33cc33',
-            '#33ccff',
-            '#e6e600',
-          ],
-          data: [2478, 5267, 734, 784, 433],
+          backgroundColor: backgroundColors(),
+          data: usersParticipation(),
         },
       ],
     },
@@ -24,6 +20,28 @@ export default function PieChart() {
       responsive: false,
     },
   };
+
+  function backgroundColors() {
+    const colors = ['#ff0000', '#0039e6', '#33cc33', '#33ccff', '#e6e600'];
+    let count = 0;
+    const arrayColors = [];
+
+    for (let i = 0; i < users.length + 1; i++) {
+      if (count === colors.length) {
+        count = 0;
+      }
+      arrayColors.push(colors[count]);
+      count++;
+    }
+
+    return arrayColors;
+  }
+
+  function usersParticipation() {
+    return users.map((e) => {
+      return e.participation;
+    });
+  }
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
@@ -37,24 +55,41 @@ export default function PieChart() {
   });
 
   function renderLegend() {
-    const items = [
-      { name: 'Hugo Silva', color: 'blue' },
-      { name: 'Carlos Moura', color: 'red' },
-      { name: 'Eliza Souza', color: 'yellow' },
-      { name: 'Fernanda Oliveira', color: 'grey' },
-      { name: 'Anderson Santos', color: 'green' },
-    ];
-    const legends = items.map((item, index) => {
-      // eslint-disable-next-line react/no-array-index-key
-      return <Legend key={index} name={item.name} color={item.color} />;
-    });
+    const colors = backgroundColors();
+    const legends = [];
+
+    for (let i = 0; i < users.length; i++) {
+      legends.push(
+        <Legend
+          key={users[i]._id}
+          name={`${capitalizeFirstLetter(
+            users[i].name
+          )} ${capitalizeFirstLetter(users[i].lastName)}`}
+          color={colors[i]}
+        />
+      );
+    }
+
     return legends;
   }
 
   return (
     <div className="flex">
-      <canvas id="myChart" width="250" height="250" />
+      <canvas id="myChart" width="380" height="380" />
       <div>{renderLegend()}</div>
     </div>
   );
 }
+
+PieChart.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      lastName: PropTypes.string,
+      name: PropTypes.string,
+      participation: PropTypes.number,
+      date: PropTypes.string,
+      _v: PropTypes.number,
+    })
+  ).isRequired,
+};

@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Cubo from '../../screens/cuboChallenge/Cubo';
@@ -84,7 +87,7 @@ export default function Navbar() {
                   </a>
                   <div className="relative inline-block text-left float-right">
                     <div>
-                      <element
+                      <a
                         className=" inline-flex px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
                         onClick={handleList}
                       >
@@ -102,7 +105,7 @@ export default function Navbar() {
                             fill="white"
                           />
                         </svg>
-                      </element>
+                      </a>
                     </div>
                     <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 ">
                       <div
