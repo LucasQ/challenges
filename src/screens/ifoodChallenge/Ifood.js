@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from './Filter';
 import TableIfood from './TableIfood';
 
-export default function Cubo() {
+export default function Ifood() {
   return (
     <div className="container mx-auto">
       <div>
