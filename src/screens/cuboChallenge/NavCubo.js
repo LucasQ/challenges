@@ -36,7 +36,7 @@ export default function NavCubo({ submitData }) {
   }
 
   return (
-    <div className="bg-blue-400	h-32">
+    <div className="bg-blue-400 h-32">
       <form onSubmit={handleSubmit}>
         <div className="container mx-auto h-full">
           <div className="flex space-x-6 justify-center pt-10 mx-32">

@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Cubo from '../../screens/cuboChallenge/Cubo';
+import Ifood from '../../screens/ifoodChallenge/Ifood';
 
 export default function Navbar() {
   const [isActive, setActive] = useState('false');
@@ -59,18 +60,6 @@ export default function Navbar() {
               </button>
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-              <div className="flex-shrink-0 flex items-center">
-                <img
-                  className="block lg:hidden h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
-                <img
-                  className="hidden lg:block h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                  alt="Workflow"
-                />
-              </div>
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   <a
@@ -121,6 +110,21 @@ export default function Navbar() {
                           to="/cubo"
                         >
                           Cubo Network
+                        </Link>
+                      </div>
+                      <div
+                        className={isActive ? 'py-1 hidden' : 'py-1'}
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="options-menu"
+                      >
+                        <Link
+                          href="!#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                          to="/ifood"
+                        >
+                          iFood
                         </Link>
                       </div>
                     </div>
@@ -183,6 +187,9 @@ export default function Navbar() {
       <Switch>
         <Route path="/cubo">
           <Cubo />
+        </Route>
+        <Route path="/ifood">
+          <Ifood />
         </Route>
       </Switch>
     </Router>

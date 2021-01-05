@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import NavCubo from './NavCubo';
 import Table from './Table';
 import PieChart from './PieChart';
-import axios from '../../services/axios';
 import { getData } from '../../services/cuboChallenge/userService';
 
 export default function Cubo() {
