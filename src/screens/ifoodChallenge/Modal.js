@@ -4,7 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 export default function Modal({ show, handleClose }) {
-  const showHideModal = show ? 'block' : 'block';
+  const showHideModal = show ? 'block' : 'hidden';
 
   return (
     <div

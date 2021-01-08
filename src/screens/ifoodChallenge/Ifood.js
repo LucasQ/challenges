@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Filter from './Filter';
 import TableIfood from './TableIfood';
+import getData from '../../services/ifoodChallenge/clientService';
 
 export default function Ifood() {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    getData()
+      .then((result) => {
+        setData(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="container mx-auto">
       <div>
@@ -10,7 +23,7 @@ export default function Ifood() {
         <Filter />
       </div>
       <div className="mt-10">
-        <TableIfood />
+        <TableIfood data={data} />
       </div>
     </div>
   );
